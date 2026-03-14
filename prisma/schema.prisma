@@ -1,0 +1,123 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  super_admin
+  admin
+  editor
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  role          UserRole  @default(editor)
+  mfaEnabled    Boolean   @default(false)
+  mfaSecret     String?   // Encrypted
+  permissions   Json?     // Used for Editor feature toggles: { "athletes": true, "news": false }
+  lastLogin     DateTime?
+  resetRequired Boolean   @default(false)
+  auditLogs     AuditLog[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  action      String   // e.g., "LOGIN_FAILED", "ATHLETE_UPDATE", "PERMISSION_CHANGE"
+  resource    String?  // e.g., "Athlete:clx123"
+  metadata    Json?    // Stores old vs new values for transparency
+  ipAddress   String?
+  userAgent   String?
+  timestamp   DateTime @default(now())
+}
+
+model Athlete {
+  id               String   @id @default(cuid())
+  nameKa           String
+  nameEn           String
+  bioKa            String?  @db.Text
+  bioEn            String?  @db.Text
+  imageUrl         String?
+  weightClass      String
+  category         String   // e.g., Freestyle, Greco-Roman
+  birthDate        DateTime?
+  club             String?
+  isFeatured       Boolean  @default(false)
+  matchesAsAthlete1 Match[] @relation("Athlete1")
+  matchesAsAthlete2 Match[] @relation("Athlete2")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Tournament {
+  id          String   @id @default(cuid())
+  titleKa     String
+  titleEn     String
+  descriptionKa String? @db.Text
+  descriptionEn String? @db.Text
+  date        DateTime
+  endDate     DateTime?
+  locationKa  String
+  locationEn  String
+  type        String   // e.g., National, International, Youth
+  imageUrl    String?
+  matches     Match[]
+  isLive      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Match {
+  id            String     @id @default(cuid())
+  tournament    Tournament @relation(fields: [tournamentId], references: [id])
+  tournamentId  String
+  athlete1      Athlete    @relation("Athlete1", fields: [athlete1Id], references: [id])
+  athlete1Id    String
+  athlete2      Athlete    @relation("Athlete2", fields: [athlete2Id], references: [id])
+  athlete2Id    String
+  score1        Int        @default(0)
+  score2        Int        @default(0)
+  winnerId      String?
+  matchTime     DateTime?
+  style         String?    // e.g., Freestyle
+  weight        String?    // e.g., 74kg
+  status        String     @default("PENDING") // PENDING, LIVE, COMPLETED
+  videoUrl      String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  titleKa     String
+  titleEn     String
+  contentKa   String   @db.Text
+  contentEn   String   @db.Text
+  excerptKa   String?  @db.Text
+  excerptEn   String?  @db.Text
+  slug        String   @unique
+  imageUrl    String?
+  category    String   // e.g., News, Event, Academy
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SiteSettings {
+  id           String @id @default("global")
+  heroTitleKa  String
+  heroTitleEn  String
+  heroDescKa   String @db.Text
+  heroDescEn   String @db.Text
+  footerKa     String @db.Text
+  footerEn     String @db.Text
+  updatedAt    DateTime @updatedAt
+}

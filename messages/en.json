@@ -1,0 +1,19 @@
+{
+  "Home": {
+    "title": "Georgian Wrestling Federation",
+    "description": "The official governing body for wrestling in Georgia.",
+    "competitions": "Competitions",
+    "rankings": "Rankings",
+    "latestNews": "Latest News",
+    "upcomingTournaments": "Scheduled Events",
+    "matchResults": "1x1 Match Results",
+    "upcomingEvents": "Scheduled Events",
+    "latestNewsHeadline": "Latest News",
+    "allNews": "All News",
+    "partners": "Official Federation Partners",
+    "register": "Register Athlete",
+    "readMore": "Read More",
+    "weightCategory": "Weight Category",
+    "club": "Club"
+  }
+}
