@@ -39,7 +39,7 @@ export default function UpcomingEvents() {
   const locale = useLocale() as 'ka' | 'en';
 
   return (
-    <section className="py-20 bg-background-dark relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-background-dark relative overflow-hidden">
       <div className="container px-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
           <div className="text-left">

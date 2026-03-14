@@ -37,7 +37,7 @@ export default function LatestMatches() {
   const locale = useLocale() as 'ka' | 'en';
 
   return (
-    <section className="py-20 bg-background-dark border-y border-primary/10">
+    <section className="py-12 md:py-20 bg-background-dark border-y border-primary/10">
       <div className="container px-4">
         <h3 className="text-3xl font-black text-white mb-12 italic uppercase tracking-tighter text-center">
           {locale === 'ka' ? 'ბოლო 1X1 მატჩების შედეგები' : 'Latest 1x1 Match Results'}

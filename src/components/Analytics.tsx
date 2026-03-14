@@ -38,7 +38,7 @@ export default function Analytics() {
   const t = useTranslations('Home');
 
   return (
-    <section className="py-20 bg-background-dark relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-background-dark relative overflow-hidden">
       {/* Saint George Background Overlay - Right Side Only */}
       <div 
         className="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none z-0"

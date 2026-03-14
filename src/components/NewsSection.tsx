@@ -34,7 +34,7 @@ export default function NewsSection() {
   const locale = useLocale() as 'ka' | 'en';
 
   return (
-    <section className="py-20 bg-surface/30">
+    <section className="py-12 md:py-20 bg-surface/30">
       <div className="container px-4">
         <div className="flex items-center justify-between mb-12">
           <h3 className="text-4xl font-black text-white italic uppercase leading-none">{t('latestNewsHeadline')}</h3>
