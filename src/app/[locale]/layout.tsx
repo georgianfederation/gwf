@@ -27,6 +27,10 @@ export async function generateMetadata({params}: {params: Params}) {
   return {
     title: locale === 'ka' ? "საქართველოს ჭიდაობის ფედერაცია" : "Georgian Wrestling Federation",
     description: "Official website of the Wrestling Federation",
+    icons: {
+      icon: "/logo.png",
+      apple: "/logo.png",
+    },
   };
 }
 
