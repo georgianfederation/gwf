@@ -100,6 +100,7 @@ export default function Analytics() {
                     {w}
                   </motion.button>
                 ))}
+              </div>
             </div>
           </div>
         </div>
