@@ -54,7 +54,7 @@ export default function LatestMatches() {
               whileTap={{ scale: 0.98 }}
               transition={{ delay: idx * 0.05, duration: 0.4 }}
               viewport={{ once: true, margin: "-50px" }}
-              className="flex-none w-80 bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/40 transition-all group will-change-transform"
+              className="flex-none w-80 bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/40 transition-all group opacity-0 will-change-transform"
             >
               <div className="flex flex-col gap-6">
                 <div className="flex items-center justify-between">

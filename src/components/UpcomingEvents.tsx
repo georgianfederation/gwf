@@ -66,7 +66,7 @@ export default function UpcomingEvents() {
               whileTap={{ scale: 0.98 }}
               transition={{ delay: idx * 0.05, duration: 0.4 }}
               viewport={{ once: true, margin: "-50px" }}
-              className="flex-none w-[320px] md:w-[380px] group bg-surface rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/50 transition-all shadow-2xl will-change-transform"
+              className="flex-none w-[320px] md:w-[380px] group bg-surface rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/50 transition-all shadow-2xl opacity-0 will-change-transform"
             >
               <div className="relative h-48 overflow-hidden border-b border-primary/20">
                 {/* Background Image with Overlay */}
