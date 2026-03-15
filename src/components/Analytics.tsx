@@ -53,7 +53,14 @@ export default function Analytics() {
         }}
       />
       <div className="container px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between items-start mb-12 gap-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{ opacity: 0 }}
+          className="will-change-transform"
+        >
+          <div className="flex flex-col lg:flex-row justify-between items-start mb-12 gap-10">
           <div className="max-w-md">
             <h2 className="text-accent font-bold uppercase tracking-[0.2em] text-[10px] mb-3 scoreboard-font">
               {locale === 'ka' ? 'შესრულების მეტრიკა' : 'Performance Metrics'}
@@ -168,6 +175,7 @@ export default function Analytics() {
             </div>
           </div>
         </div>
+        </motion.div>
       </div>
     </section>
   );

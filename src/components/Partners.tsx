@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 import { Dumbbell, Trophy, Shield, Timer, Activity } from 'lucide-react';
 
 const partners = [
@@ -20,13 +21,21 @@ export default function Partners() {
         <p className="text-center text-slate-600 text-[10px] font-black uppercase tracking-[0.4em] mb-12 scoreboard-font">
           {t('partners')}
         </p>
-        <div className="flex items-center justify-start md:justify-center gap-12 lg:gap-24 overflow-x-auto no-scrollbar pb-8 px-4 -mx-4 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
-          {partners.map((partner) => (
-            <div key={partner.id} className="group cursor-pointer flex-none">
-               <partner.icon className="w-12 h-12 text-slate-300 group-hover:text-primary transition-colors" />
-            </div>
-          ))}
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{ opacity: 0 }}
+          className="will-change-transform"
+        >
+          <div className="flex items-center justify-start md:justify-center gap-12 lg:gap-24 overflow-x-auto no-scrollbar pb-8 px-4 -mx-4 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
+            {partners.map((partner) => (
+              <div key={partner.id} className="group cursor-pointer flex-none">
+                 <partner.icon className="w-12 h-12 text-slate-300 group-hover:text-primary transition-colors" />
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

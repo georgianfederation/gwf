@@ -25,7 +25,8 @@ export default function Stats() {
             whileHover={{ y: -16, zIndex: 50 }}
             transition={{ delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="flex-none w-72 lg:w-auto bg-surface border border-primary/10 p-8 rounded-2xl shadow-2xl flex items-center gap-6 hover:border-primary/30 transition-all relative opacity-0 will-change-transform"
+            style={{ opacity: 0 }}
+            className="flex-none w-72 lg:w-auto bg-surface border border-primary/10 p-8 rounded-2xl shadow-2xl flex items-center gap-6 hover:border-primary/30 transition-all relative will-change-transform"
           >
             <div className="bg-primary/10 p-4 rounded-xl text-primary">
               <stat.icon className="w-8 h-8" />

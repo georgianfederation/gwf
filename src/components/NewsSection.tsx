@@ -53,7 +53,8 @@ export default function NewsSection() {
               whileTap={{ scale: 0.98 }}
               transition={{ delay: idx * 0.1, duration: 0.4 }}
               viewport={{ once: true, margin: "-50px" }}
-              className="bg-surface rounded-xl overflow-hidden shadow-lg border border-primary/5 group opacity-0 will-change-transform"
+              style={{ opacity: 0 }}
+              className="bg-surface rounded-xl overflow-hidden shadow-lg border border-primary/5 group will-change-transform"
             >
               <div className="overflow-hidden h-56">
                 <img 
