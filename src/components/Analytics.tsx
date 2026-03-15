@@ -85,12 +85,13 @@ export default function Analytics() {
               </p>
               <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar max-w-full">
                 {weights.map((w, idx) => (
-                  <button 
+                  <motion.button 
                     key={w} 
+                    whileTap={{ scale: 0.95 }}
                     className={`flex-none whitespace-nowrap px-4 py-1.5 rounded text-[11px] font-bold scoreboard-font transition-all ${idx === 0 ? 'bg-slate-700 text-white' : 'bg-surface border border-slate-700 text-slate-400 hover:text-white'}`}
                   >
                     {w}
-                  </button>
+                  </motion.button>
                 ))}
               </div>
             </div>
@@ -111,7 +112,11 @@ export default function Analytics() {
               </thead>
               <tbody className="divide-y divide-white/5">
                 {tableData.map((row) => (
-                  <tr key={row.name.en} className="hover:bg-primary/5 transition-colors group">
+                  <motion.tr 
+                    key={row.name.en} 
+                    whileHover={{ backgroundColor: "rgba(234,179,8,0.05)" }}
+                    className="transition-colors group cursor-default"
+                  >
                     <td className="py-5 px-6">
                       <div className="flex items-center gap-4">
                         <div className="relative size-10 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold text-xs ring-2 ring-primary/20">
@@ -137,7 +142,7 @@ export default function Analytics() {
                         {row.status}
                        </span>
                     </td>
-                  </tr>
+                  </motion.tr>
                 ))}
               </tbody>
             </table>
@@ -148,12 +153,18 @@ export default function Analytics() {
               {locale === 'ka' ? 'ვერიფიცირებული მონაცემები • განახლდა: 2 წუთის წინ' : 'Verified Official Data • Last Updated: 2 mins ago'}
             </p>
             <div className="flex gap-4">
-              <button className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-[10px] font-bold scoreboard-font uppercase">
+              <motion.button 
+                whileTap={{ scale: 0.9 }}
+                className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-[10px] font-bold scoreboard-font uppercase cursor-pointer"
+              >
                 <Download className="w-3 h-3" /> Export
-              </button>
-              <button className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-[10px] font-bold scoreboard-font uppercase">
+              </motion.button>
+              <motion.button 
+                whileTap={{ scale: 0.9 }}
+                className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors text-[10px] font-bold scoreboard-font uppercase cursor-pointer"
+              >
                 <Printer className="w-3 h-3" /> Print
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>

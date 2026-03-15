@@ -59,11 +59,14 @@ export default function UpcomingEvents() {
           {events.map((event, idx) => (
             <motion.div 
               key={event.id}
-              initial={{ opacity: 0, y: 20 }}
+              layout
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="flex-none w-[320px] md:w-[380px] group bg-surface rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/50 transition-all shadow-2xl"
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ delay: idx * 0.05, duration: 0.4 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="flex-none w-[320px] md:w-[380px] group bg-surface rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/50 transition-all shadow-2xl will-change-transform"
             >
               <div className="relative h-48 overflow-hidden border-b border-primary/20">
                 {/* Background Image with Overlay */}
@@ -95,9 +98,13 @@ export default function UpcomingEvents() {
                   <MapPin className="w-3.5 h-3.5 text-primary" />
                   {event.location[locale]}
                 </div>
-                <button className="w-full py-3 border border-primary text-primary hover:bg-primary hover:text-background-dark font-black rounded-lg transition-all text-sm uppercase scoreboard-font">
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 border border-primary text-primary hover:bg-primary hover:text-background-dark font-black rounded-lg transition-all text-sm uppercase scoreboard-font active:bg-primary active:text-background-dark"
+                >
                   {t('register')}
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           ))}

@@ -22,10 +22,10 @@ export default function Hero() {
 
       <div className="container relative z-20">
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-2xl will-change-transform"
         >
           <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-600/30 text-red-500 px-4 py-1.5 rounded-full mb-6">
             <span className="relative flex h-2 w-2">
@@ -37,20 +37,24 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.1] mb-6 tracking-tight italic uppercase">
+          <h1 className="text-4xl xs:text-5xl md:text-7xl font-black text-white leading-[1.1] mb-6 tracking-tight italic uppercase break-words">
             {locale === 'ka' ? 'საქართველოს ჭიდაობის ფედერაცია' : 'GEORGIAN WRESTLING FEDERATION'}
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-xl font-medium leading-relaxed">
+          <p className="text-base md:text-xl text-slate-300 mb-8 max-w-xl font-medium leading-relaxed">
             {t('description')} {locale === 'ka' 
               ? 'საქართველოს ოფიციალური მმართველი ორგანო ჭიდაობაში. მხარდაჭერა 2,400-ზე მეტი ათლეტისათვის სხვადასხვა სტილში.' 
               : 'The official governing body for wrestling in Georgia. Supporting over 2,400 athletes across multiple styles from grassroots to olympic level.'}
           </p>
 
           <div className="flex flex-wrap gap-4 mb-12">
-            <button className="bg-primary text-background-dark px-8 py-2.5 rounded-xl font-black text-lg hover:scale-105 transition-transform flex items-center gap-2 shadow-[0_0_20px_rgba(234,179,8,0.3)]">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-primary text-background-dark px-8 py-2.5 rounded-xl font-black text-lg flex items-center gap-2 shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-colors hover:bg-white active:bg-white"
+            >
               {t('competitions')} <Calendar className="w-5 h-5" />
-            </button>
+            </motion.button>
           </div>
 
           <div className="grid grid-cols-2 gap-12 border-t border-white/10 pt-4 max-w-lg">

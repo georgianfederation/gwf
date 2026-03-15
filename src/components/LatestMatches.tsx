@@ -44,13 +44,17 @@ export default function LatestMatches() {
         </h3>
         
         <div className="flex gap-6 overflow-x-auto pb-8 no-scrollbar -mx-4 px-4">
-          {matches.map((match) => (
+          {matches.map((match, idx) => (
             <motion.div 
               key={match.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="flex-none w-80 bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/40 transition-all group"
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ delay: idx * 0.05, duration: 0.4 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="flex-none w-80 bg-surface border border-white/5 rounded-2xl p-6 hover:border-primary/40 transition-all group will-change-transform"
             >
               <div className="flex flex-col gap-6">
                 <div className="flex items-center justify-between">

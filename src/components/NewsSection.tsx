@@ -47,11 +47,13 @@ export default function NewsSection() {
           {newsItems.map((article, idx) => (
             <motion.article 
               key={article.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-surface rounded-xl overflow-hidden shadow-lg border border-primary/5 group"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ delay: idx * 0.1, duration: 0.4 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="bg-surface rounded-xl overflow-hidden shadow-lg border border-primary/5 group will-change-transform"
             >
               <div className="overflow-hidden h-56">
                 <img 
@@ -70,8 +72,13 @@ export default function NewsSection() {
                 <p className="text-slate-400 text-sm mb-6 line-clamp-2 font-medium">
                   {article.excerpt[locale]}
                 </p>
-                <Link href={`/news/${article.id}`} className="text-primary font-black text-xs uppercase inline-flex items-center gap-1 group-hover:gap-2 transition-all scoreboard-font">
-                  {t('readMore')} <ArrowUpRight className="w-3 h-3" />
+                <Link href={`/news/${article.id}`}>
+                  <motion.span 
+                    whileTap={{ scale: 0.95 }}
+                    className="text-primary font-black text-xs uppercase inline-flex items-center gap-1 group-hover:gap-2 transition-all scoreboard-font active:text-white"
+                  >
+                    {t('readMore')} <ArrowUpRight className="w-3 h-3" />
+                  </motion.span>
                 </Link>
               </div>
             </motion.article>
